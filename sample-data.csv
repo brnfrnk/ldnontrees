@@ -1,0 +1,11 @@
+GIS_ID,SpeciesCode,Diameter,LastEditDate,OBJECTID,Status,St_Num,On_Street,Location,Botanical,CommonName,Insp_Date,Insp_Notes,Status_OLD,Migration_Notes,CreatedBy,CreatedOn,WarrantyDate,GlobalID
+4009056.4501,ACSA,12,2011/09/12 08:00:00+00,1009274,1,621,ELIAS ST,Boulevard,Acer saccharum,"Maple, Sugar",2019/05/14 14:13:00+00,,,,,,,,
+4801060.14450001,ACPL,43,2011/09/12 07:54:00+00,1000275,1,653,ELIAS ST,Boulevard,Acer platanoides,"Maple, Norway",2019/05/14 14:03:00+00,,,1,Updated from old,,None,,
+4812864346,GLTR,8,2023/06/14 13:02:00+00,1009279,1,729,ELIAS ST,Boulevard,Gleditsia triacanthos var inermis ShadeMaster,"Locust, Honey ShadeMaster",2019/05/14 16:37:00+00,,,1,Updated from old,,None,,
+4812864347,ACSA,15,2023/06/14 13:02:00+00,1009280,1,730,ELIAS ST,Boulevard,Acer saccharum,"Maple, Sugar",2019/05/14 16:37:00+00,,,1,Updated from old,,None,,
+4812864348,ACPL,25,2023/06/14 13:02:00+00,1009281,1,731,ELIAS ST,Boulevard,Acer platanoides,"Maple, Norway",2019/05/14 16:37:00+00,,,1,Updated from old,,None,,
+4812864349,ACSA,18,2023/06/14 13:02:00+00,1009282,1,732,ELIAS ST,Boulevard,Acer saccharum,"Maple, Sugar",2019/05/14 16:37:00+00,,,1,Updated from old,,None,,
+4812864350,GLTR,12,2023/06/14 13:02:00+00,1009283,1,733,ELIAS ST,Boulevard,Gleditsia triacanthos var inermis ShadeMaster,"Locust, Honey ShadeMaster",2019/05/14 16:37:00+00,,,1,Updated from old,,None,,
+4812864351,ACSA,22,2023/06/14 13:02:00+00,1009284,1,734,ELIAS ST,Boulevard,Acer saccharum,"Maple, Sugar",2019/05/14 16:37:00+00,,,1,Updated from old,,None,,
+4812864352,ACPL,16,2023/06/14 13:02:00+00,1009285,1,735,ELIAS ST,Boulevard,Acer platanoides,"Maple, Norway",2019/05/14 16:37:00+00,,,1,Updated from old,,None,,
+4812864353,FRPE,14,2023/06/14 13:02:00+00,1009286,1,736,ELIAS ST,Boulevard,Fraxinus pennsylvanica,"Ash, Green",2019/05/14 16:37:00+00,,,1,Updated from old,,None,,

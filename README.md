@@ -1,4 +1,4 @@
-# Project Name
+# London, Ontario Trees
 
 <!-- Badges -->
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -6,7 +6,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/brnfrnk/test.svg)](https://github.com/brnfrnk/test/stargazers)
 [![GitHub Forks](https://img.shields.io/github/forks/brnfrnk/test.svg)](https://github.com/brnfrnk/test/network)
 
-> A brief, compelling description of what this project does and who it's for.
+> An interactive web application to explore and learn about tree species managed by the City of London, Ontario.
 
 ## Table of Contents
 
@@ -29,53 +29,48 @@
 
 ## Overview
 
-Provide a more detailed description of the project. Explain:
-- What problem it solves
-- Why it exists
-- What makes it different from similar projects
-- Who should use it
+This project aims to build awareness of the diverse tree species in London, Ontario by providing an accessible, interactive platform to explore the city's urban forest. Using open data from the City of London's forestry department (nearly 200,000 tree records), the app helps residents:
+- Discover what trees are in their community
+- Learn which species are most common
+- Build awareness of urban forestry efforts
+- (Future) Learn about native, invasive, and at-risk species
 
-### Demo
+The current MVP provides a foundation for future educational features.
 
-<!-- Add screenshots, GIFs, or video demonstrations -->
-```
-Add screenshots or demo GIFs here
-```
+### MVP Features
+
+This initial release includes:
+- Upload and parse the Forestry.csv dataset
+- Browse all tree species with counts
+- Visualize the top 20 species in an interactive bar chart
 
 ## Features
 
-- **Feature 1**: Description of the first key feature
-- **Feature 2**: Description of the second key feature
-- **Feature 3**: Description of the third key feature
-- **Feature 4**: Description of additional features
-- **Cross-platform**: Works on Linux, macOS, and Windows
-- **Well-documented**: Comprehensive documentation and examples
-- **Tested**: High test coverage and continuous integration
+### Current (MVP)
+- **Species List**: Complete scrollable list of all tree species sorted by count
+- **Interactive Chart**: Horizontal bar graph showing top 20 most common species
+- **CSV Upload**: Client-side CSV parsing (no server required)
+- **Responsive Design**: Works on desktop and mobile devices
+- **No Build Required**: Pure HTML/CSS/JavaScript
+
+### Planned Enhancements
+- **Sort & Filter**: By species name, count, location, diameter
+- **Species Badges**: Native, invasive, at-risk indicators
+- **Detailed Species Pages**: Expand/collapse or navigate to learn more about each tree
+- **Map Integration**: Geographic visualization of tree locations
+- **Search**: Quick find functionality
+- **Educational Content**: Care guides, identification tips, ecological benefits
 
 ## Getting Started
 
 ### Prerequisites
 
-Before you begin, ensure you have the following installed:
-
-```bash
-# Example for Node.js project
-Node.js >= 18.x
-npm >= 9.x or yarn >= 1.22.x
-
-# Example for Python project
-Python >= 3.9
-pip >= 21.x
-
-# Example for Go project
-Go >= 1.21
-```
+You only need a modern web browser:
+- Chrome, Firefox, Safari, or Edge
+- JavaScript enabled
+- No server or dependencies required
 
 ### Installation
-
-Choose your preferred installation method:
-
-#### Option 1: Clone from GitHub
 
 ```bash
 # Clone the repository
@@ -83,118 +78,48 @@ git clone https://github.com/brnfrnk/test.git
 
 # Navigate to the project directory
 cd test
-
-# Install dependencies
-npm install
-# or
-pip install -r requirements.txt
-# or
-go mod download
 ```
 
-#### Option 2: Using Package Manager
-
-```bash
-# npm
-npm install project-name
-
-# pip
-pip install project-name
-
-# go
-go get github.com/brnfrnk/test
-```
+That's it! No build process or dependencies to install.
 
 ### Quick Start
 
-Get up and running in under a minute:
+1. **Open the app**: Open `index.html` in your web browser (double-click or right-click → Open With → Browser)
 
-```bash
-# Set up environment variables
-cp .env.example .env
+2. **Get the data**: Download the Forestry.csv file from the City of London or use the provided sample data
 
-# Run the development server
-npm run dev
-# or
-python manage.py runserver
-# or
-go run main.go
+3. **Load the data**: Click "Load Forestry.csv data" and select your CSV file
 
-# Access the application
-# Open http://localhost:3000 in your browser
-```
+4. **Explore**: Scroll through the species list and view the interactive bar chart
 
 ## Usage
 
-### Basic Example
+### Data Format
 
-```javascript
-// JavaScript/TypeScript example
-import { SomeFunction } from 'project-name';
+The app expects a CSV file with at minimum these columns:
+- **CommonName**: The common name of the tree species (e.g., "Maple, Sugar")
+- **Botanical**: (Optional) Scientific name (e.g., "Acer saccharum")
 
-const result = SomeFunction({
-  option1: 'value1',
-  option2: 'value2'
-});
+The full Forestry dataset from the City of London includes additional columns like:
+- GIS_ID, Diameter, On_Street, Location, Status, Insp_Date, etc.
 
-console.log(result);
-```
+### Using Your Own Data
 
-```python
-# Python example
-from project_name import some_function
+To use this app with different tree data:
 
-result = some_function(
-    option1='value1',
-    option2='value2'
-)
+1. Ensure your CSV has a `CommonName` column
+2. The app will automatically count occurrences of each species
+3. Species are sorted by count (most common first)
+4. The chart displays the top 20 species
 
-print(result)
-```
+### Files Included
 
-```go
-// Go example
-package main
-
-import "github.com/brnfrnk/test"
-
-func main() {
-    result := test.SomeFunction(test.Options{
-        Option1: "value1",
-        Option2: "value2",
-    })
-    fmt.Println(result)
-}
-```
-
-### Advanced Usage
-
-For more advanced use cases, see the [documentation](docs/).
-
-#### Configuration
-
-```yaml
-# config.yml example
-app:
-  name: "My Application"
-  port: 3000
-  debug: false
-
-database:
-  host: "localhost"
-  port: 5432
-  name: "mydb"
-```
-
-#### API Reference
-
-```bash
-# API endpoint examples
-GET    /api/v1/resource
-POST   /api/v1/resource
-PUT    /api/v1/resource/:id
-DELETE /api/v1/resource/:id
-```
+- `index.html` - Main application structure
+- `app.js` - CSV parsing, data processing, and chart rendering
+- `styles.css` - Styling and responsive layout
+- `sample-data.csv` - 10-row sample for testing
+- `README.md` - This documentation
+- `CLAUDE.md` - Guide for AI assistants working with this codebase
 
 ## Documentation
 
@@ -211,96 +136,62 @@ Comprehensive documentation is available:
 
 ```
 .
-├── src/                 # Source code
-│   ├── components/      # Reusable components
-│   ├── services/        # Business logic
-│   ├── utils/           # Utility functions
-│   └── config/          # Configuration
-├── tests/               # Test files
-│   ├── unit/            # Unit tests
-│   ├── integration/     # Integration tests
-│   └── e2e/             # End-to-end tests
-├── docs/                # Documentation
-├── scripts/             # Build and automation scripts
-├── public/              # Static assets
-├── .github/             # GitHub workflows and templates
-├── package.json         # Dependencies and scripts
+├── index.html           # Main application page
+├── app.js               # JavaScript logic (CSV parsing, charts)
+├── styles.css           # Styling and layout
+├── sample-data.csv      # Sample dataset for testing
 ├── README.md            # This file
-└── LICENSE              # License information
+└── CLAUDE.md            # AI assistant guide
 ```
 
-### Building
+### Technical Stack
 
-```bash
-# Development build
-npm run build:dev
-# or
-python setup.py build
-# or
-go build
+- **HTML5**: Semantic markup
+- **CSS3**: Grid layout, custom properties, responsive design
+- **Vanilla JavaScript**: ES6+ features, no frameworks
+- **Chart.js**: Data visualization library (loaded via CDN)
 
-# Production build (optimized)
-npm run build
-# or
-python setup.py build --optimize
-# or
-go build -ldflags="-s -w"
+### Making Changes
 
-# Clean build artifacts
-npm run clean
-# or
-make clean
+Since there's no build process:
+
+1. Edit the files directly in your text editor
+2. Refresh your browser to see changes
+3. Use browser DevTools for debugging
+
+### Key Functions
+
+**app.js** contains:
+- `handleFileUpload()`: Processes uploaded CSV files
+- `processCSVData()`: Parses CSV and counts species
+- `parseCSVLine()`: Handles CSV parsing with quoted fields
+- `displaySpeciesList()`: Renders the species list
+- `displayChart()`: Creates the Chart.js bar graph
+
+### Extending the App
+
+The code is structured for easy expansion:
+
+**Adding filters:**
+```javascript
+// In processCSVData, filter before counting
+if (diameter > minDiameter) {
+    // count species
+}
 ```
 
-### Testing
-
-```bash
-# Run all tests
-npm test
-# or
-pytest
-# or
-go test ./...
-
-# Run tests with coverage
-npm run test:coverage
-# or
-pytest --cov
-# or
-go test -cover ./...
-
-# Run specific test file
-npm test -- path/to/test
-# or
-pytest tests/test_specific.py
-# or
-go test ./path/to/package
-
-# Run tests in watch mode
-npm run test:watch
+**Adding species metadata:**
+```javascript
+const speciesInfo = {
+    'Maple, Sugar': { native: true, atRisk: false },
+    // ... more species
+};
 ```
 
-### Code Quality
-
-```bash
-# Linting
-npm run lint
-# or
-pylint src/
-# or
-golangci-lint run
-
-# Formatting
-npm run format
-# or
-black .
-# or
-gofmt -w .
-
-# Type checking (if applicable)
-npm run type-check
-# or
-mypy src/
+**Adding sorting:**
+```javascript
+// Sort alphabetically instead of by count
+speciesArray.sort((a, b) => a.commonName.localeCompare(b.commonName));
 ```
 
 ## Contributing
@@ -348,10 +239,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Thanks to all [contributors](https://github.com/brnfrnk/test/graphs/contributors) who have helped improve this project
-- Inspired by [similar project or resource]
-- Built with [key technologies or frameworks]
-- Special thanks to [organizations or individuals]
+- **City of London, Ontario** for providing open forestry data
+- **Chart.js** for the excellent charting library
+- Thanks to all [contributors](https://github.com/brnfrnk/test/graphs/contributors) who help improve this project
+- Inspired by the need to connect urban residents with their natural environment
 
 ---
 
@@ -363,10 +254,30 @@ See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 
 ## Roadmap
 
-- [ ] Feature 1 planned for next release
-- [ ] Feature 2 in development
-- [ ] Feature 3 under consideration
-- [ ] See [open issues](https://github.com/brnfrnk/test/issues) for more details
+### v1.0 - MVP (Current)
+- [x] CSV upload and parsing
+- [x] Species list with counts
+- [x] Top 20 bar chart visualization
+
+### v1.1 - Enhanced Interaction
+- [ ] Sort by name or count
+- [ ] Filter by species characteristics
+- [ ] Search functionality
+- [ ] Download/export capability
+
+### v1.2 - Educational Features
+- [ ] Native/invasive/at-risk badges
+- [ ] Species detail pages
+- [ ] Care and identification guides
+- [ ] Ecological benefit information
+
+### v1.3 - Geographic Features
+- [ ] Map visualization of tree locations
+- [ ] Filter by neighborhood/street
+- [ ] Proximity search
+- [ ] Street tree finder
+
+See [open issues](https://github.com/brnfrnk/test/issues) for detailed feature requests and bugs
 
 ## Support
 
