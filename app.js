@@ -1,31 +1,57 @@
 let chart = null;
 let speciesMetadata = {};
 
-document.getElementById('csvFile').addEventListener('change', handleFileUpload);
+const DATA_URL = 'https://github.com/brnfrnk/ldnontrees/releases/download/v1.0.0/london-ontario-trees.csv';
 
 fetch('species-metadata.json')
     .then(response => response.json())
     .then(data => {
         speciesMetadata = data.species;
+        loadTreeData();
     })
     .catch(error => {
         console.warn('Could not load species metadata:', error);
+        loadTreeData();
     });
 
-function handleFileUpload(event) {
-    const file = event.target.files[0];
-    if (!file) return;
+function updateLoadingStatus(message, status = 'loading') {
+    const loadingSection = document.getElementById('loadingSection');
+    const loadingStatus = document.getElementById('loadingStatus');
 
-    const fileInfo = document.getElementById('fileInfo');
-    fileInfo.textContent = `Loading ${file.name}...`;
+    loadingStatus.textContent = message;
+    loadingSection.className = 'loading-section';
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        const csvContent = e.target.result;
-        processCSVData(csvContent);
-        fileInfo.textContent = `Loaded: ${file.name}`;
-    };
-    reader.readAsText(file);
+    if (status === 'success') {
+        loadingSection.classList.add('success');
+        setTimeout(() => {
+            loadingSection.classList.add('hidden');
+        }, 2000);
+    } else if (status === 'error') {
+        loadingSection.classList.add('error');
+    }
+}
+
+function loadTreeData() {
+    updateLoadingStatus('Loading London tree data...');
+
+    fetch(DATA_URL)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(csvContent => {
+            updateLoadingStatus('Processing data...', 'loading');
+            processCSVData(csvContent);
+            updateLoadingStatus('Data loaded successfully!', 'success');
+        })
+        .catch(error => {
+            console.error('Error loading tree data:', error);
+            updateLoadingStatus('Error loading data. Please refresh the page.', 'error');
+            document.getElementById('speciesList').innerHTML =
+                '<p class="placeholder">Failed to load tree data. Please check your connection and refresh the page.</p>';
+        });
 }
 
 function processCSVData(csvContent) {

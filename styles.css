@@ -39,35 +39,50 @@ header h1 {
     opacity: 0.9;
 }
 
-.upload-section {
-    padding: 30px 40px;
+.loading-section {
+    padding: 20px 40px;
     background: #f8f9fa;
     border-bottom: 2px solid #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.file-label {
-    display: inline-block;
-    padding: 12px 24px;
-    background: #4a7c2c;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
-}
-
-.file-label:hover {
-    background: #3d6624;
-}
-
-#csvFile {
+.loading-section.hidden {
     display: none;
 }
 
-.file-info {
-    margin-top: 15px;
+.loading-indicator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #e9ecef;
+    border-top-color: #4a7c2c;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#loadingStatus {
     color: #6c757d;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.loading-section.success #loadingStatus {
+    color: #155724;
+}
+
+.loading-section.error #loadingStatus {
+    color: #721c24;
 }
 
 .content-grid {

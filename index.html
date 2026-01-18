@@ -14,19 +14,18 @@
             <p class="subtitle">Exploring the urban forest canopy</p>
         </header>
 
-        <div class="upload-section">
-            <label for="csvFile" class="file-label">
-                Load Forestry.csv data:
-                <input type="file" id="csvFile" accept=".csv" />
-            </label>
-            <p class="file-info" id="fileInfo">No file loaded</p>
+        <div class="loading-section" id="loadingSection">
+            <div class="loading-indicator">
+                <div class="spinner"></div>
+                <p id="loadingStatus">Loading tree data...</p>
+            </div>
         </div>
 
         <div class="content-grid">
             <div class="species-list-section">
                 <h2>Tree Species</h2>
                 <div id="speciesList" class="species-list">
-                    <p class="placeholder">Load CSV file to see species list</p>
+                    <p class="placeholder">Loading data...</p>
                 </div>
             </div>
 
