@@ -97,16 +97,27 @@ That's it! No build process or dependencies to install.
 
 The app loads data from a GitHub Release. To set this up:
 
-1. **Create a release**: Go to [Releases](https://github.com/brnfrnk/ldnontrees/releases) → "Create a new release"
-2. **Tag version**: Use `v1.0.0` (must match the version in `app.js`)
-3. **Upload file**: Attach `london-ontario-trees.csv` (your 54MB Forestry.csv renamed)
-4. **Publish**: The app will automatically fetch from the release URL
+1. **Compress the CSV** (to stay under GitHub's 25MB file limit):
+   ```bash
+   gzip -k london-ontario-trees.csv
+   # Creates london-ontario-trees.csv.gz (~5-10MB)
+   ```
+
+2. **Create a release**: Go to [Releases](https://github.com/brnfrnk/ldnontrees/releases) → "Create a new release"
+
+3. **Tag version**: Use `v1.0.0` (must match the version in `app.js`)
+
+4. **Upload file**: Attach `london-ontario-trees.csv.gz` (compressed file)
+
+5. **Publish**: The app will automatically fetch and decompress the data
+
+**Note**: The app uses [pako.js](https://github.com/nodeca/pako) for client-side gzip decompression.
 
 ## Usage
 
 ### Data Source
 
-The app uses data from the City of London's Forestry department (2019 dataset, ~200,000 tree records). The data is hosted on GitHub Releases for easy access and versioning.
+The app uses data from the City of London's Forestry department (2019 dataset, ~200,000 tree records). The data is hosted on GitHub Releases as a compressed `.csv.gz` file (~5-10MB compressed from 54MB) for easy access and versioning. The app automatically decompresses it in the browser.
 
 **CSV Format:**
 - **CommonName**: The common name of the tree species (e.g., "Maple, Sugar")
@@ -118,9 +129,10 @@ The app uses data from the City of London's Forestry department (2019 dataset, ~
 To update the tree data with new information:
 
 1. Edit `london-ontario-trees.csv` with updated tree information
-2. Create a new GitHub Release (e.g., `v1.0.1`)
-3. Upload the updated CSV file
-4. Update `DATA_URL` in `app.js` to point to the new version
+2. Compress it: `gzip -k london-ontario-trees.csv`
+3. Create a new GitHub Release (e.g., `v1.0.1`)
+4. Upload the `.csv.gz` file
+5. Update `DATA_URL` in `app.js` to point to the new version
 
 **Future**: Community contributions via GitHub Issues or Pull Requests (see [Roadmap](#roadmap))
 
@@ -134,7 +146,7 @@ To update the tree data with new information:
 - `README.md` - This documentation
 - `CLAUDE.md` - Guide for AI assistants working with this codebase
 
-**Note**: The main dataset (`london-ontario-trees.csv`) is hosted on GitHub Releases due to its 54MB size.
+**Note**: The main dataset (`london-ontario-trees.csv.gz`) is hosted on GitHub Releases as a compressed gzip file (~5-10MB) to stay under GitHub's file size limits.
 
 ### Species Metadata
 
@@ -176,6 +188,7 @@ Comprehensive documentation is available:
 - **CSS3**: Grid layout, custom properties, responsive design
 - **Vanilla JavaScript**: ES6+ features, no frameworks
 - **Chart.js**: Data visualization library (loaded via CDN)
+- **Pako.js**: Gzip decompression library (loaded via CDN)
 
 ### Making Changes
 
@@ -188,7 +201,7 @@ Since there's no build process:
 ### Key Functions
 
 **app.js** contains:
-- `loadTreeData()`: Fetches CSV from GitHub Releases
+- `loadTreeData()`: Fetches compressed CSV from GitHub Releases and decompresses it
 - `processCSVData()`: Parses CSV and counts species
 - `parseCSVLine()`: Handles CSV parsing with quoted fields
 - `displaySpeciesList()`: Renders the species list with metadata
