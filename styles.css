@@ -175,3 +175,90 @@ h2 {
 .species-list-section::-webkit-scrollbar-thumb:hover {
     background: #3d6624;
 }
+
+.species-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.status-native {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-badge.status-invasive {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.status-badge.status-native---at-risk {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.status-badge.status-cultivar {
+    background-color: #e2e3e5;
+    color: #383d41;
+    border: 1px solid #d6d8db;
+}
+
+.species-also-known {
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-style: italic;
+    margin-bottom: 6px;
+}
+
+.species-notes {
+    font-size: 0.85rem;
+    color: #495057;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.species-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.species-links a {
+    font-size: 0.8rem;
+    color: #4a7c2c;
+    text-decoration: none;
+    padding: 4px 10px;
+    background-color: #e8f5e9;
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+    display: inline-block;
+}
+
+.species-links a:hover {
+    background-color: #4a7c2c;
+    color: white;
+}
+
+.species-links a::after {
+    content: ' ↗';
+    font-size: 0.7rem;
+}

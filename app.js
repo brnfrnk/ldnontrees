@@ -1,6 +1,16 @@
 let chart = null;
+let speciesMetadata = {};
 
 document.getElementById('csvFile').addEventListener('change', handleFileUpload);
+
+fetch('species-metadata.json')
+    .then(response => response.json())
+    .then(data => {
+        speciesMetadata = data.species;
+    })
+    .catch(error => {
+        console.warn('Could not load species metadata:', error);
+    });
 
 function handleFileUpload(event) {
     const file = event.target.files[0];
@@ -23,6 +33,7 @@ function processCSVData(csvContent) {
     const headers = parseCSVLine(lines[0]);
 
     const commonNameIndex = headers.indexOf('CommonName');
+    const botanicalIndex = headers.indexOf('Botanical');
 
     if (commonNameIndex === -1) {
         alert('Error: CommonName column not found in CSV');
@@ -36,8 +47,11 @@ function processCSVData(csvContent) {
 
         const values = parseCSVLine(lines[i]);
         const commonName = values[commonNameIndex]?.trim();
+        const botanical = values[botanicalIndex]?.trim() || '';
 
         if (!commonName) continue;
+
+        const botanicalBase = extractBaseBotanicalName(botanical);
 
         if (speciesMap.has(commonName)) {
             const existing = speciesMap.get(commonName);
@@ -45,6 +59,7 @@ function processCSVData(csvContent) {
         } else {
             speciesMap.set(commonName, {
                 commonName: commonName,
+                botanical: botanicalBase,
                 count: 1
             });
         }
@@ -55,6 +70,15 @@ function processCSVData(csvContent) {
 
     displaySpeciesList(speciesArray);
     displayChart(speciesArray);
+}
+
+function extractBaseBotanicalName(botanical) {
+    if (!botanical) return '';
+    const parts = botanical.split(' ');
+    if (parts.length >= 2) {
+        return `${parts[0]} ${parts[1]}`;
+    }
+    return botanical;
 }
 
 function parseCSVLine(line) {
@@ -95,21 +119,78 @@ function displaySpeciesList(speciesArray) {
     }
 
     speciesArray.forEach(species => {
+        const metadata = speciesMetadata[species.botanical] || {};
+
         const item = document.createElement('div');
         item.className = 'species-item';
+
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'species-header';
 
         const nameDiv = document.createElement('div');
         nameDiv.className = 'species-name';
         nameDiv.textContent = species.commonName;
 
+        if (metadata.status) {
+            const badge = document.createElement('span');
+            badge.className = `status-badge status-${metadata.status.toLowerCase().replace(/\s+/g, '-')}`;
+            badge.textContent = metadata.status;
+            nameDiv.appendChild(badge);
+        }
+
+        headerDiv.appendChild(nameDiv);
+
         const countDiv = document.createElement('div');
         countDiv.className = 'species-count';
         countDiv.textContent = `${species.count.toLocaleString()} trees`;
 
-        item.appendChild(nameDiv);
+        item.appendChild(headerDiv);
         item.appendChild(countDiv);
+
+        if (metadata.alsoKnownAs && metadata.alsoKnownAs.length > 0) {
+            const alsoKnownDiv = document.createElement('div');
+            alsoKnownDiv.className = 'species-also-known';
+            alsoKnownDiv.textContent = `Also known as: ${metadata.alsoKnownAs.join(', ')}`;
+            item.appendChild(alsoKnownDiv);
+        }
+
+        if (metadata.notes) {
+            const notesDiv = document.createElement('div');
+            notesDiv.className = 'species-notes';
+            notesDiv.textContent = metadata.notes;
+            item.appendChild(notesDiv);
+        }
+
+        if (metadata.links && Object.keys(metadata.links).length > 0) {
+            const linksDiv = document.createElement('div');
+            linksDiv.className = 'species-links';
+
+            Object.entries(metadata.links).forEach(([key, url]) => {
+                const link = document.createElement('a');
+                link.href = url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.textContent = formatLinkText(key);
+                linksDiv.appendChild(link);
+            });
+
+            item.appendChild(linksDiv);
+        }
+
         listContainer.appendChild(item);
     });
+}
+
+function formatLinkText(key) {
+    const linkTextMap = {
+        'ontarioTreeAtlas': 'Ontario Tree Atlas',
+        'moreInfo': 'More Info',
+        'invasiveInfo': 'Invasive Species Info',
+        'reforestLondon': 'ReForest London',
+        'emeraldAshBorer': 'Emerald Ash Borer Info',
+        'ontarioGov': 'Ontario.ca'
+    };
+    return linkTextMap[key] || key;
 }
 
 function displayChart(speciesArray) {

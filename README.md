@@ -50,16 +50,18 @@ This initial release includes:
 - **Species List**: Complete scrollable list of all tree species sorted by count
 - **Interactive Chart**: Horizontal bar graph showing top 20 most common species
 - **CSV Upload**: Client-side CSV parsing (no server required)
+- **Species Metadata**: Status badges (Native, Invasive, At Risk, Cultivar) with educational information
+- **Educational Links**: Direct links to Ontario Tree Atlas and species information resources
 - **Responsive Design**: Works on desktop and mobile devices
 - **No Build Required**: Pure HTML/CSS/JavaScript
 
 ### Planned Enhancements
 - **Sort & Filter**: By species name, count, location, diameter
-- **Species Badges**: Native, invasive, at-risk indicators
+- **Expanded Metadata**: Complete all species in metadata database
 - **Detailed Species Pages**: Expand/collapse or navigate to learn more about each tree
 - **Map Integration**: Geographic visualization of tree locations
 - **Search**: Quick find functionality
-- **Educational Content**: Care guides, identification tips, ecological benefits
+- **Enhanced Educational Content**: Care guides, identification tips, ecological benefits
 
 ## Getting Started
 
@@ -117,9 +119,21 @@ To use this app with different tree data:
 - `index.html` - Main application structure
 - `app.js` - CSV parsing, data processing, and chart rendering
 - `styles.css` - Styling and responsive layout
+- `species-metadata.json` - Species information database (native status, links, notes)
 - `sample-data.csv` - 10-row sample for testing
 - `README.md` - This documentation
 - `CLAUDE.md` - Guide for AI assistants working with this codebase
+
+### Species Metadata
+
+The app includes a `species-metadata.json` file that provides educational information matched to tree species by their botanical (scientific) name. For each species, the metadata includes:
+
+- **Status**: Native, Invasive, Native - At Risk, or Cultivar
+- **Also Known As**: Alternative common names
+- **Notes**: Educational information about the species
+- **Links**: Resources for learning more (Ontario Tree Atlas, invasive species info, etc.)
+
+The metadata database currently includes common Southwest Ontario species and can be expanded as needed.
 
 ## Documentation
 
@@ -258,6 +272,8 @@ See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 - [x] CSV upload and parsing
 - [x] Species list with counts
 - [x] Top 20 bar chart visualization
+- [x] Species metadata with Native/Invasive/At Risk badges
+- [x] Educational links to Ontario Tree Atlas and resources
 
 ### v1.1 - Enhanced Interaction
 - [ ] Sort by name or count
@@ -266,10 +282,11 @@ See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 - [ ] Download/export capability
 
 ### v1.2 - Educational Features
-- [ ] Native/invasive/at-risk badges
-- [ ] Species detail pages
+- [ ] Expand species metadata to cover all species in dataset
+- [ ] Species detail pages with expand/collapse
 - [ ] Care and identification guides
 - [ ] Ecological benefit information
+- [ ] Images and visual identification aids
 
 ### v1.3 - Geographic Features
 - [ ] Map visualization of tree locations
