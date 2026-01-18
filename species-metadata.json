@@ -1,0 +1,158 @@
+{
+  "metadata_info": {
+    "description": "Species metadata for London, Ontario trees including native status, invasive designation, and at-risk information",
+    "last_updated": "2026-01-18",
+    "sources": [
+      "Ontario Tree Atlas (ontario.ca/page/tree-atlas)",
+      "Ontario Invasive Plant Council",
+      "Invasive Species Centre"
+    ]
+  },
+  "species": {
+    "Acer saccharum": {
+      "commonName": "Maple, Sugar",
+      "alsoKnownAs": ["Sugar Maple", "Hard Maple", "Rock Maple"],
+      "status": "Native",
+      "notes": "Native to Ontario, excellent shade tree, spectacular fall color",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas",
+        "moreInfo": "https://www.ontariotrees.com"
+      }
+    },
+    "Acer platanoides": {
+      "commonName": "Maple, Norway",
+      "alsoKnownAs": ["Norway Maple"],
+      "status": "Invasive",
+      "notes": "Invasive species from Europe. Outcompetes native maples. No longer recommended for planting.",
+      "links": {
+        "invasiveInfo": "https://www.ontarioinvasiveplants.ca/invasive-plants/species/norway-maple/",
+        "reforestLondon": "https://www.reforestlondon.ca/resources/norway-maple/"
+      }
+    },
+    "Acer rubrum": {
+      "commonName": "Maple, Red",
+      "alsoKnownAs": ["Red Maple", "Swamp Maple", "Soft Maple"],
+      "status": "Native",
+      "notes": "Native to Ontario. Recommended alternative to Norway Maple.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Fraxinus pennsylvanica": {
+      "commonName": "Ash, Green",
+      "alsoKnownAs": ["Green Ash", "Red Ash"],
+      "status": "Native - At Risk",
+      "notes": "Native species severely threatened by Emerald Ash Borer (EAB). Population declining.",
+      "links": {
+        "emeraldAshBorer": "https://www.invasivespeciescentre.ca/invasive-species/meet-the-species/invasive-insects/emerald-ash-borer-duplicate-471/",
+        "ontarioGov": "https://www.ontario.ca/page/managing-emerald-ash-borer-and-bronze-birch-borer-landscape-trees"
+      }
+    },
+    "Fraxinus americana": {
+      "commonName": "Ash, White",
+      "alsoKnownAs": ["White Ash", "American Ash"],
+      "status": "Native - At Risk",
+      "notes": "Native species severely threatened by Emerald Ash Borer (EAB). Population declining.",
+      "links": {
+        "emeraldAshBorer": "https://www.invasivespeciescentre.ca/invasive-species/meet-the-species/invasive-insects/emerald-ash-borer-duplicate-471/"
+      }
+    },
+    "Fraxinus nigra": {
+      "commonName": "Ash, Black",
+      "alsoKnownAs": ["Black Ash", "Swamp Ash", "Basket Ash"],
+      "status": "Native - At Risk",
+      "notes": "Native species, listed as special concern. Severely threatened by Emerald Ash Borer. Protection efforts underway.",
+      "links": {
+        "emeraldAshBorer": "https://www.invasivespeciescentre.ca/invasive-species/meet-the-species/invasive-insects/emerald-ash-borer-duplicate-471/"
+      }
+    },
+    "Gleditsia triacanthos": {
+      "commonName": "Locust, Honey",
+      "alsoKnownAs": ["Honey Locust", "Thorny Locust"],
+      "status": "Native",
+      "notes": "Native to parts of North America. Many cultivars exist including thornless varieties.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Gleditsia triacanthos var inermis": {
+      "commonName": "Locust, Honey (Thornless)",
+      "alsoKnownAs": ["Thornless Honey Locust"],
+      "status": "Cultivar",
+      "notes": "Thornless cultivar of native Honey Locust. Popular urban tree.",
+      "links": {}
+    },
+    "Tilia americana": {
+      "commonName": "Linden, American",
+      "alsoKnownAs": ["Basswood", "American Basswood", "American Linden"],
+      "status": "Native",
+      "notes": "Native to Ontario. Excellent shade tree with fragrant flowers.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Quercus rubra": {
+      "commonName": "Oak, Red",
+      "alsoKnownAs": ["Red Oak", "Northern Red Oak"],
+      "status": "Native",
+      "notes": "Native to Ontario. Important wildlife tree with brilliant fall color.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Quercus alba": {
+      "commonName": "Oak, White",
+      "alsoKnownAs": ["White Oak"],
+      "status": "Native",
+      "notes": "Native to Ontario. Long-lived, valuable hardwood tree.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Acer saccharinum": {
+      "commonName": "Maple, Silver",
+      "alsoKnownAs": ["Silver Maple", "Soft Maple", "Water Maple"],
+      "status": "Native",
+      "notes": "Native to Ontario. Fast-growing, tolerates wet conditions.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Betula papyrifera": {
+      "commonName": "Birch, Paper",
+      "alsoKnownAs": ["Paper Birch", "White Birch", "Canoe Birch"],
+      "status": "Native",
+      "notes": "Native to Ontario. Distinctive white bark, important for wildlife.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Ulmus americana": {
+      "commonName": "Elm, American",
+      "alsoKnownAs": ["American Elm", "White Elm"],
+      "status": "Native - At Risk",
+      "notes": "Native species severely impacted by Dutch Elm Disease. Disease-resistant cultivars available.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Picea glauca": {
+      "commonName": "Spruce, White",
+      "alsoKnownAs": ["White Spruce", "Canadian Spruce"],
+      "status": "Native",
+      "notes": "Native conifer, important timber and wildlife tree.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    },
+    "Pinus strobus": {
+      "commonName": "Pine, White",
+      "alsoKnownAs": ["White Pine", "Eastern White Pine"],
+      "status": "Native",
+      "notes": "Native to Ontario. Provincial tree, tallest tree in eastern North America.",
+      "links": {
+        "ontarioTreeAtlas": "https://www.ontario.ca/page/tree-atlas"
+      }
+    }
+  }
+}

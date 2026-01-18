@@ -1,12 +1,12 @@
-# Project Name
+# London, Ontario Trees
 
 <!-- Badges -->
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![GitHub Issues](https://img.shields.io/github/issues/brnfrnk/test.svg)](https://github.com/brnfrnk/test/issues)
-[![GitHub Stars](https://img.shields.io/github/stars/brnfrnk/test.svg)](https://github.com/brnfrnk/test/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/brnfrnk/test.svg)](https://github.com/brnfrnk/test/network)
+[![GitHub Issues](https://img.shields.io/github/issues/brnfrnk/ldnontrees.svg)](https://github.com/brnfrnk/ldnontrees/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/brnfrnk/ldnontrees.svg)](https://github.com/brnfrnk/ldnontrees/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/brnfrnk/ldnontrees.svg)](https://github.com/brnfrnk/ldnontrees/network)
 
-> A brief, compelling description of what this project does and who it's for.
+> An interactive web application to explore and learn about tree species managed by the City of London, Ontario.
 
 ## Table of Contents
 
@@ -29,172 +29,135 @@
 
 ## Overview
 
-Provide a more detailed description of the project. Explain:
-- What problem it solves
-- Why it exists
-- What makes it different from similar projects
-- Who should use it
+This project aims to build awareness of the diverse tree species in London, Ontario by providing an accessible, interactive platform to explore the city's urban forest. Using open data from the City of London's forestry department (nearly 200,000 tree records), the app helps residents:
+- Discover what trees are in their community
+- Learn which species are most common
+- Build awareness of urban forestry efforts
+- (Future) Learn about native, invasive, and at-risk species
 
-### Demo
+The current MVP provides a foundation for future educational features.
 
-<!-- Add screenshots, GIFs, or video demonstrations -->
-```
-Add screenshots or demo GIFs here
-```
+### MVP Features
+
+This initial release includes:
+- Auto-load tree data from GitHub Releases (200,000 tree records)
+- Browse all tree species with counts
+- Visualize the top 20 species in an interactive bar chart
+- Educational information with species status badges
 
 ## Features
 
-- **Feature 1**: Description of the first key feature
-- **Feature 2**: Description of the second key feature
-- **Feature 3**: Description of the third key feature
-- **Feature 4**: Description of additional features
-- **Cross-platform**: Works on Linux, macOS, and Windows
-- **Well-documented**: Comprehensive documentation and examples
-- **Tested**: High test coverage and continuous integration
+### Current (MVP)
+- **Auto-Load Data**: Automatically loads ~200,000 tree records from GitHub Releases
+- **Species List**: Complete scrollable list of all tree species sorted by count
+- **Interactive Chart**: Horizontal bar graph showing top 20 most common species
+- **Species Metadata**: Status badges (Native, Invasive, At Risk, Cultivar) with educational information
+- **Educational Links**: Direct links to Ontario Tree Atlas and species information resources
+- **Responsive Design**: Works on desktop and mobile devices
+- **No Backend Required**: Pure HTML/CSS/JavaScript, runs entirely in browser
+
+### Planned Enhancements
+- **Sort & Filter**: By species name, count, location, diameter
+- **Expanded Metadata**: Complete all species in metadata database
+- **Detailed Species Pages**: Expand/collapse or navigate to learn more about each tree
+- **Map Integration**: Geographic visualization of tree locations
+- **Search**: Quick find functionality
+- **Enhanced Educational Content**: Care guides, identification tips, ecological benefits
 
 ## Getting Started
 
 ### Prerequisites
 
-Before you begin, ensure you have the following installed:
-
-```bash
-# Example for Node.js project
-Node.js >= 18.x
-npm >= 9.x or yarn >= 1.22.x
-
-# Example for Python project
-Python >= 3.9
-pip >= 21.x
-
-# Example for Go project
-Go >= 1.21
-```
+You only need a modern web browser:
+- Chrome, Firefox, Safari, or Edge
+- JavaScript enabled
+- No server or dependencies required
 
 ### Installation
 
-Choose your preferred installation method:
-
-#### Option 1: Clone from GitHub
-
 ```bash
 # Clone the repository
-git clone https://github.com/brnfrnk/test.git
+git clone https://github.com/brnfrnk/ldnontrees.git
 
 # Navigate to the project directory
-cd test
-
-# Install dependencies
-npm install
-# or
-pip install -r requirements.txt
-# or
-go mod download
+cd ldnontrees
 ```
 
-#### Option 2: Using Package Manager
-
-```bash
-# npm
-npm install project-name
-
-# pip
-pip install project-name
-
-# go
-go get github.com/brnfrnk/test
-```
+That's it! No build process or dependencies to install.
 
 ### Quick Start
 
-Get up and running in under a minute:
+1. **Open the app**: Open `index.html` in your web browser (double-click or right-click → Open With → Browser)
 
-```bash
-# Set up environment variables
-cp .env.example .env
+2. **Data loads automatically**: The app will automatically fetch and load the tree data from GitHub Releases
 
-# Run the development server
-npm run dev
-# or
-python manage.py runserver
-# or
-go run main.go
+3. **Explore**: Scroll through the species list and view the interactive bar chart
 
-# Access the application
-# Open http://localhost:3000 in your browser
-```
+### Setting Up the Data (Maintainers)
+
+The app loads data from a GitHub Release. To set this up:
+
+1. **Compress the CSV** (to stay under GitHub's 25MB file limit):
+   ```bash
+   gzip -k london-ontario-trees.csv
+   # Creates london-ontario-trees.csv.gz (~5-10MB)
+   ```
+
+2. **Create a release**: Go to [Releases](https://github.com/brnfrnk/ldnontrees/releases) → "Create a new release"
+
+3. **Tag version**: Use `v1.0.0` (must match the version in `app.js`)
+
+4. **Upload file**: Attach `london-ontario-trees.csv.gz` (compressed file)
+
+5. **Publish**: The app will automatically fetch and decompress the data
+
+**Note**: The app uses [pako.js](https://github.com/nodeca/pako) for client-side gzip decompression.
 
 ## Usage
 
-### Basic Example
+### Data Source
 
-```javascript
-// JavaScript/TypeScript example
-import { SomeFunction } from 'project-name';
+The app uses data from the City of London's Forestry department (2019 dataset, ~200,000 tree records). The data is hosted on GitHub Releases as a compressed `.csv.gz` file (~5-10MB compressed from 54MB) for easy access and versioning. The app automatically decompresses it in the browser.
 
-const result = SomeFunction({
-  option1: 'value1',
-  option2: 'value2'
-});
+**CSV Format:**
+- **CommonName**: The common name of the tree species (e.g., "Maple, Sugar")
+- **Botanical**: Scientific name (e.g., "Acer saccharum") - used for metadata matching
+- Additional columns: GIS_ID, Diameter, On_Street, Location, Status, Insp_Date, etc.
 
-console.log(result);
-```
+### Updating the Data
 
-```python
-# Python example
-from project_name import some_function
+To update the tree data with new information:
 
-result = some_function(
-    option1='value1',
-    option2='value2'
-)
+1. Edit `london-ontario-trees.csv` with updated tree information
+2. Compress it: `gzip -k london-ontario-trees.csv`
+3. Create a new GitHub Release (e.g., `v1.0.1`)
+4. Upload the `.csv.gz` file
+5. Update `DATA_URL` in `app.js` to point to the new version
 
-print(result)
-```
+**Future**: Community contributions via GitHub Issues or Pull Requests (see [Roadmap](#roadmap))
 
-```go
-// Go example
-package main
+### Files Included
 
-import "github.com/brnfrnk/test"
+- `index.html` - Main application structure
+- `app.js` - Data fetching, CSV parsing, and chart rendering
+- `styles.css` - Styling and responsive layout
+- `species-metadata.json` - Species information database (native status, links, notes)
+- `sample-data.csv` - 10-row sample for testing
+- `README.md` - This documentation
+- `CLAUDE.md` - Guide for AI assistants working with this codebase
 
-func main() {
-    result := test.SomeFunction(test.Options{
-        Option1: "value1",
-        Option2: "value2",
-    })
-    fmt.Println(result)
-}
-```
+**Note**: The main dataset (`london-ontario-trees.csv.gz`) is hosted on GitHub Releases as a compressed gzip file (~5-10MB) to stay under GitHub's file size limits.
 
-### Advanced Usage
+### Species Metadata
 
-For more advanced use cases, see the [documentation](docs/).
+The app includes a `species-metadata.json` file that provides educational information matched to tree species by their botanical (scientific) name. For each species, the metadata includes:
 
-#### Configuration
+- **Status**: Native, Invasive, Native - At Risk, or Cultivar
+- **Also Known As**: Alternative common names
+- **Notes**: Educational information about the species
+- **Links**: Resources for learning more (Ontario Tree Atlas, invasive species info, etc.)
 
-```yaml
-# config.yml example
-app:
-  name: "My Application"
-  port: 3000
-  debug: false
-
-database:
-  host: "localhost"
-  port: 5432
-  name: "mydb"
-```
-
-#### API Reference
-
-```bash
-# API endpoint examples
-GET    /api/v1/resource
-POST   /api/v1/resource
-PUT    /api/v1/resource/:id
-DELETE /api/v1/resource/:id
-```
+The metadata database currently includes common Southwest Ontario species and can be expanded as needed.
 
 ## Documentation
 
@@ -211,96 +174,64 @@ Comprehensive documentation is available:
 
 ```
 .
-├── src/                 # Source code
-│   ├── components/      # Reusable components
-│   ├── services/        # Business logic
-│   ├── utils/           # Utility functions
-│   └── config/          # Configuration
-├── tests/               # Test files
-│   ├── unit/            # Unit tests
-│   ├── integration/     # Integration tests
-│   └── e2e/             # End-to-end tests
-├── docs/                # Documentation
-├── scripts/             # Build and automation scripts
-├── public/              # Static assets
-├── .github/             # GitHub workflows and templates
-├── package.json         # Dependencies and scripts
+├── index.html           # Main application page
+├── app.js               # JavaScript logic (CSV parsing, charts)
+├── styles.css           # Styling and layout
+├── sample-data.csv      # Sample dataset for testing
 ├── README.md            # This file
-└── LICENSE              # License information
+└── CLAUDE.md            # AI assistant guide
 ```
 
-### Building
+### Technical Stack
 
-```bash
-# Development build
-npm run build:dev
-# or
-python setup.py build
-# or
-go build
+- **HTML5**: Semantic markup
+- **CSS3**: Grid layout, custom properties, responsive design
+- **Vanilla JavaScript**: ES6+ features, no frameworks
+- **Chart.js**: Data visualization library (loaded via CDN)
+- **Pako.js**: Gzip decompression library (loaded via CDN)
 
-# Production build (optimized)
-npm run build
-# or
-python setup.py build --optimize
-# or
-go build -ldflags="-s -w"
+### Making Changes
 
-# Clean build artifacts
-npm run clean
-# or
-make clean
+Since there's no build process:
+
+1. Edit the files directly in your text editor
+2. Refresh your browser to see changes
+3. Use browser DevTools for debugging
+
+### Key Functions
+
+**app.js** contains:
+- `loadTreeData()`: Fetches compressed CSV from GitHub Releases and decompresses it
+- `processCSVData()`: Parses CSV and counts species
+- `parseCSVLine()`: Handles CSV parsing with quoted fields
+- `displaySpeciesList()`: Renders the species list with metadata
+- `displayChart()`: Creates the Chart.js bar graph
+- `updateLoadingStatus()`: Manages loading indicator states
+
+### Extending the App
+
+The code is structured for easy expansion:
+
+**Adding filters:**
+```javascript
+// In processCSVData, filter before counting
+if (diameter > minDiameter) {
+    // count species
+}
 ```
 
-### Testing
-
-```bash
-# Run all tests
-npm test
-# or
-pytest
-# or
-go test ./...
-
-# Run tests with coverage
-npm run test:coverage
-# or
-pytest --cov
-# or
-go test -cover ./...
-
-# Run specific test file
-npm test -- path/to/test
-# or
-pytest tests/test_specific.py
-# or
-go test ./path/to/package
-
-# Run tests in watch mode
-npm run test:watch
+**Adding species metadata:**
+```javascript
+const speciesInfo = {
+    'Maple, Sugar': { native: true, atRisk: false },
+    // ... more species
+};
 ```
 
-### Code Quality
-
-```bash
-# Linting
-npm run lint
-# or
-pylint src/
-# or
-golangci-lint run
-
-# Formatting
-npm run format
-# or
-black .
-# or
-gofmt -w .
-
-# Type checking (if applicable)
-npm run type-check
-# or
-mypy src/
+**Adding sorting:**
+```javascript
+// Sort alphabetically instead of by count
+speciesArray.sort((a, b) => a.commonName.localeCompare(b.commonName));
 ```
 
 ## Contributing
@@ -344,14 +275,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Email**: your.email@example.com
 - **Website**: https://yourwebsite.com
 
-**Project Link**: [https://github.com/brnfrnk/test](https://github.com/brnfrnk/test)
+**Project Link**: [https://github.com/brnfrnk/ldnontrees](https://github.com/brnfrnk/ldnontrees)
 
 ## Acknowledgments
 
-- Thanks to all [contributors](https://github.com/brnfrnk/test/graphs/contributors) who have helped improve this project
-- Inspired by [similar project or resource]
-- Built with [key technologies or frameworks]
-- Special thanks to [organizations or individuals]
+- **City of London, Ontario** for providing open forestry data
+- **Chart.js** for the excellent charting library
+- Thanks to all [contributors](https://github.com/brnfrnk/ldnontrees/graphs/contributors) who help improve this project
+- Inspired by the need to connect urban residents with their natural environment
 
 ---
 
@@ -363,18 +294,45 @@ See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 
 ## Roadmap
 
-- [ ] Feature 1 planned for next release
-- [ ] Feature 2 in development
-- [ ] Feature 3 under consideration
-- [ ] See [open issues](https://github.com/brnfrnk/test/issues) for more details
+### v1.0 - MVP (Current)
+- [x] Auto-load data from GitHub Releases
+- [x] Species list with counts (~200,000 trees)
+- [x] Top 20 bar chart visualization
+- [x] Species metadata with Native/Invasive/At Risk badges
+- [x] Educational links to Ontario Tree Atlas and resources
+- [x] Loading indicator with status messages
+
+### v1.1 - Enhanced Interaction
+- [ ] Sort by name or count
+- [ ] Filter by species characteristics
+- [ ] Search functionality
+- [ ] Download/export capability
+- [ ] GitHub Issues template for community tree updates
+- [ ] Data versioning and update workflow
+
+### v1.2 - Educational Features
+- [ ] Expand species metadata to cover all species in dataset
+- [ ] Species detail pages with expand/collapse
+- [ ] Care and identification guides
+- [ ] Ecological benefit information
+- [ ] Images and visual identification aids
+
+### v1.3 - Geographic Features
+- [ ] Map visualization of tree locations
+- [ ] Filter by neighborhood/street
+- [ ] Proximity search
+- [ ] Street tree finder
+
+See [open issues](https://github.com/brnfrnk/ldnontrees/issues) for detailed feature requests and bugs
 
 ## Support
 
 If you encounter any issues or have questions:
 
-- **Bug Reports**: [Create an issue](https://github.com/brnfrnk/test/issues/new?template=bug_report.md)
-- **Feature Requests**: [Create an issue](https://github.com/brnfrnk/test/issues/new?template=feature_request.md)
-- **Discussions**: [GitHub Discussions](https://github.com/brnfrnk/test/discussions)
+- **Bug Reports**: [Create an issue](https://github.com/brnfrnk/ldnontrees/issues/new?template=bug_report.md)
+- **Feature Requests**: [Create an issue](https://github.com/brnfrnk/ldnontrees/issues/new?template=feature_request.md)
+- **Tree Data Updates**: Report removed or planted trees via GitHub Issues (coming soon)
+- **Discussions**: [GitHub Discussions](https://github.com/brnfrnk/ldnontrees/discussions)
 
 ---
 
