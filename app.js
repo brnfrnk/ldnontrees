@@ -1,7 +1,7 @@
 let chart = null;
 let speciesMetadata = {};
 
-const DATA_URL = 'https://github.com/brnfrnk/ldnontrees/releases/download/v1.0.0/london-ontario-trees.csv.gz';
+const DATA_URL = 'https://github.com/brnfrnk/ldnontrees/releases/download/v1.0.1/london-ontario-trees.csv.gz';
 
 fetch('species-metadata.json')
     .then(response => response.json())
